@@ -21,7 +21,7 @@ object APIProvider {
             okHttpClient.writeTimeout(60, TimeUnit.SECONDS)
 
             val mRetrofit: Retrofit = Retrofit.Builder()
-                .baseUrl("http://5cac1d41c85e05001452eef0.mockapi.io/")
+                .baseUrl("https://5cac1d41c85e05001452eef0.mockapi.io/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient.build())
                 .build()

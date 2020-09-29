@@ -7,7 +7,7 @@
 
         <variable
             name="job"
-            type="com.kargo.tech.models.KargoJob" />
+            type="com.kargo.tech.models.entities.KargoJob" />
 
         <import type="com.kargo.tech.utils.TimeUtil"/>
     </data>
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@{job.source}"
+                android:text="@{job.origin}"
                 app:layout_constraintStart_toEndOf="@id/tv_title_source"
                 app:layout_constraintTop_toTopOf="@id/tv_title_source"
                 tools:text="asdasdae" />
@@ -97,7 +97,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.5"/>
+                app:layout_constraintGuide_percent="0.6"/>
 
             <TextView
                 android:id="@+id/tv_title_price"
@@ -115,7 +115,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@{job.price}"
+                android:text="@{String.valueOf(job.price)}"
                 app:layout_constraintStart_toEndOf="@id/tv_title_price"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tv_title_price"

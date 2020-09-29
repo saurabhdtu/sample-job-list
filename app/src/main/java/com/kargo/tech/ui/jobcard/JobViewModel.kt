@@ -1,11 +1,11 @@
 package com.kargo.tech.ui.jobcard
 
-import android.content.ContentResolver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kargo.tech.api.Error
 import com.kargo.tech.api.JobAPI
-import com.kargo.tech.models.KargoJob
+import com.kargo.tech.models.entities.KargoJob
+import com.kargo.tech.models.response.JobResponse
 import kotlinx.coroutines.*
 
 class JobViewModel : ViewModel() {
@@ -25,10 +25,10 @@ class JobViewModel : ViewModel() {
         progress.value = true
         CoroutineScope(Dispatchers.IO).launch {
             val response = async { JobAPI.getInstance()?.getJobCards() }.await()
-            if(response is ArrayList<*>){
+            if(response is JobResponse){
                 withContext(Dispatchers.Main){
                     progress.value = false
-                    list.value= response as ArrayList<KargoJob>?
+                    list.value= response.jobs
                 }
             }else if(response is Error){
                 withContext(Dispatchers.Main) {

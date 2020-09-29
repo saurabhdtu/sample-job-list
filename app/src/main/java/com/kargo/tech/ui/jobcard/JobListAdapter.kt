@@ -6,7 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.kargo.tech.R
 import com.kargo.tech.databinding.ItemJobCardBinding
-import com.kargo.tech.models.KargoJob
+import com.kargo.tech.models.entities.JobUtils
+import com.kargo.tech.models.entities.KargoJob
 
 class JobListAdapter(
     val clickListener: JobListActivity,
@@ -32,27 +33,19 @@ class JobListAdapter(
     fun appendData(dataList: ArrayList<KargoJob>) {
         val i = jobList.size
         jobList.addAll(dataList)
-        sortByDate(value1)
+        sortByTime(value1)
         sortByPrice(sortOrderPrice)
         notifyItemRangeInserted(i, dataList.size)
     }
 
     fun sortByPrice(order: Int?) {
-        if (order == 1) {
-            jobList.sortBy { it.price }
-        } else if (order == -1) {
-            jobList.sortByDescending { it.price }
-        }
+        JobUtils.sortByPrice(jobList, order)
         if (order == 1 || order == -1)
             notifyDataSetChanged()
     }
 
-    fun sortByDate(order: Int?) {
-        if (order == 1) {
-            jobList.sortBy { it.date }
-        } else if (order == -1) {
-            jobList.sortByDescending { it.date }
-        }
+    fun sortByTime(order: Int?) {
+        JobUtils.sortByTime(jobList, order)
         if (order == 1 || order == -1)
             notifyDataSetChanged()
     }
