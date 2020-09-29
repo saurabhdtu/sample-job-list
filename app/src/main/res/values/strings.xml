@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Kargo Exercise</string>
+    <string name="source">Source:</string>
+    <string name="dest">Destination:</string>
+    <string name="time">Time:</string>
+    <string name="price">Price</string>
 </resources>

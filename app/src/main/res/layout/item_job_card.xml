@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="job"
+            type="com.kargo.tech.models.KargoJob" />
+
+        <import type="com.kargo.tech.utils.TimeUtil"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        app:cardCornerRadius="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/tv_title_source"
+                style="@style/title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/source"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_source"
+                style="@style/value_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{job.source}"
+                app:layout_constraintStart_toEndOf="@id/tv_title_source"
+                app:layout_constraintTop_toTopOf="@id/tv_title_source"
+                tools:text="asdasdae" />
+
+
+            <TextView
+                android:id="@+id/tv_title_dest"
+                style="@style/title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/dest"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_source" />
+
+
+            <TextView
+                android:id="@+id/tv_dest"
+                style="@style/value_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{job.destination}"
+                app:layout_constraintStart_toEndOf="@id/tv_title_dest"
+                app:layout_constraintTop_toTopOf="@id/tv_title_dest"
+                tools:text="asdasdae" />
+
+
+            <TextView
+                android:id="@+id/tv_title_time"
+                style="@style/title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/time"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title_dest" />
+
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/value_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{TimeUtil.INSTANCE.getTimeString(job.date)}"
+                app:layout_constraintStart_toEndOf="@id/tv_title_time"
+                app:layout_constraintEnd_toStartOf="@id/guideline_center"
+                app:layout_constraintTop_toTopOf="@id/tv_title_time"
+                tools:text="asdasdae" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"/>
+
+            <TextView
+                android:id="@+id/tv_title_price"
+                style="@style/title_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price"
+                app:layout_constraintStart_toStartOf="@id/guideline_center"
+                app:layout_constraintTop_toTopOf="@id/tv_title_time" />
+
+
+            <TextView
+                android:id="@+id/tv_price"
+                style="@style/value_style"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@{job.price}"
+                app:layout_constraintStart_toEndOf="@id/tv_title_price"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title_price"
+                tools:text="asdasdae" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
